@@ -1,4 +1,4 @@
-package org.datastructure.array;
+package org.datastructure.arrayproblems;
 
 import com.sun.istack.internal.NotNull;
 
