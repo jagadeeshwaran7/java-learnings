@@ -1,15 +1,15 @@
 package org.datastructure.array.searching;
 
-import java.util.ArrayList;
-
 public class LinearSearch implements Search {
-    public static final Integer SEARCH_ID = 1;
-    public static final LinearSearch LINEAR_SEARCH = new LinearSearch();
+    private static final LinearSearch LINEAR_SEARCH = new LinearSearch();
 
     /*
      * Here im using private constructor for restrict creating object externally,
      * It helps to maintain singleton object
      */
+    public static LinearSearch getLinearSearch() {
+        return LINEAR_SEARCH;
+    }
     private LinearSearch() {
     }
 
@@ -21,6 +21,7 @@ public class LinearSearch implements Search {
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      */
+    @Override
     public final Boolean isPresent(int[] inputArray, int find) {
         for (int value : inputArray) {
             if (value == find) {
@@ -39,6 +40,7 @@ public class LinearSearch implements Search {
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      */
+   @Override
     public final Object getIndex(int[] inputArray, int value) {
 
         for (int index = 0; index < inputArray.length; index++) {
