@@ -1,17 +1,19 @@
 package org.datastructure.basicproblems;
 
-import org.datastructure.array.searching.CustomSearch;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Basics {
-    public static String reverseStringM1(String inputString) {
+    public static @NotNull String reverseStringM1(String inputString) {
         StringBuilder response = new StringBuilder(inputString);
         return response.reverse().toString();
     }
 
-    public static String reverseStringM2(String inputString) {
+    public static @NotNull String reverseStringM2(String inputString) {
         StringBuilder response = new StringBuilder();
         char[] out = inputString.toCharArray();
         for (int i = inputString.length() - 1; i >= 0; i--) {
@@ -28,7 +30,7 @@ public class Basics {
         System.out.println("A: " + a + " " + "B: " + b);
     }
 
-    public static Boolean isPresentVowel(String inputString) {
+    public static @NotNull Boolean isPresentVowel(String inputString) {
         String vowels = "aeiou";
         Map<Integer, Character> hash = new HashMap<>();
         Integer key = 1;
@@ -38,17 +40,17 @@ public class Basics {
         }
         for (Character character : inputString.toCharArray()) {
             if (hash.containsValue(character)) {
-
+                return Boolean.TRUE;
             }
         }
         return Boolean.FALSE;
     }
 
-    public static boolean stringContainsVowels(String input) {
+    public static @NotNull Boolean stringContainsVowels(String input) {
         return input.toLowerCase().matches(".*[aeiou].*");
     }
 
-    public static String vowelIndicator(String inputString) {
+    public static@NotNull String vowelIndicator(String inputString) {
         String vowels = "aeiou";
         StringBuilder response = new StringBuilder();
         for (Character character : inputString.toCharArray()) {
@@ -64,7 +66,7 @@ public class Basics {
         return response.toString();
     }
 
-    public static Boolean isPrimeNumber(Integer number) {
+    public static @NotNull Boolean isPrimeNumber(Integer number) {
         if (number >= 2) {
             for (int i = 2; i < number; i++) {
                 if (number % i == 0) {
@@ -74,6 +76,24 @@ public class Basics {
         }
         return Boolean.TRUE;
     }
+
+     public static @NotNull List<Integer> getPrimeNumbers(Integer from, Integer to) {
+        List<Integer> primeNumbers = new ArrayList<>();
+        for (int i = from; i < to; i++) {
+
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    break;
+                } else if (j == i - 1) {
+                    primeNumbers.add(i);
+
+                }
+            }
+
+        }
+
+        return primeNumbers;
+     }
 
     public static void printFibonacci(Integer range) {
        int a = 0;
@@ -92,16 +112,16 @@ public class Basics {
        }
     }
 
-    public static Boolean isPalindrome(String inputString) {
+    public static @NotNull Boolean isPalindrome(String inputString) {
         String reversedString = reverseStringM1(inputString);
         return reversedString.equals(inputString);
     }
 
-    public static String spaceFree(String inputStrng) {
+    public static @NotNull String spaceFree(String inputStrng) {
         return inputStrng.replaceAll(" ", "");
     }
 
-    public static Integer toFindFactorial(Integer inputNumber) {
+    public static @NotNull Integer toFindFactorial(Integer inputNumber) {
         int factorial = 1;
         for (int i = 1; i <= inputNumber; i++) {
             factorial *= i;
@@ -109,7 +129,7 @@ public class Basics {
         return factorial;
     }
 
-    public static Boolean isArmstrong(Integer inputNumber) {
+    public static @NotNull Boolean isArmstrong(Integer inputNumber) {
         int compare = inputNumber;
         int digit = 0;
         int result = 0;
@@ -134,7 +154,7 @@ public class Basics {
     }
 
     public static void main(String[] args) {
-        printFibonacci(13);
+        System.out.println(getPrimeNumbers(10, 50));
     }
 }
 
