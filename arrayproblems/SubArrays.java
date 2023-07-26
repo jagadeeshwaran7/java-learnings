@@ -1,10 +1,9 @@
 package org.datastructure.arrayproblems;
-
 import com.sun.istack.internal.NotNull;
 
 public class SubArrays {
-    // Java program to generate all possible subArrays
-// Complexity- O(n^3)
+    /* Java program to generate all possible subArrays
+    Complexity: O(n^3)*/
     public static void toFindAllSubArrays(@NotNull int[] array) {
         int subset = 0;
         // Taking starting point of an array

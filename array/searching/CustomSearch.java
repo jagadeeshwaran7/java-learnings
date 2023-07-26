@@ -4,6 +4,6 @@ public class CustomSearch {
     public static final LinearSearch LINEAR_SEARCH = LinearSearch.getLinearSearch();
 
     private CustomSearch() {
-
     }
+
 }

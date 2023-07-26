@@ -53,7 +53,7 @@ public class MissingNumbers {
         /*
          * s(n) = n/2 (a+l)
          * To find series of n where, a is first element of an array and l is last element of an array
-         * we divided the above AP formula
+         * we divided the below AP(Arithmetic Progression) formula
          */
         result = (firstElement + lastElement) / 2;
         result = result * (noOfElements + 1);

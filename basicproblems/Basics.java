@@ -50,7 +50,7 @@ public class Basics {
         return input.toLowerCase().matches(".*[aeiou].*");
     }
 
-    public static@NotNull String vowelIndicator(String inputString) {
+    public static @NotNull String vowelIndicator(String inputString) {
         String vowels = "aeiou";
         StringBuilder response = new StringBuilder();
         for (Character character : inputString.toCharArray()) {
@@ -86,12 +86,9 @@ public class Basics {
                     break;
                 } else if (j == i - 1) {
                     primeNumbers.add(i);
-
                 }
             }
-
         }
-
         return primeNumbers;
      }
 
@@ -153,8 +150,22 @@ public class Basics {
 
     }
 
+    public static Boolean isFollowsAP(int[] sequence) {
+        int t1 = sequence[0];
+        int t2 = sequence[1];
+        int commonDifference = t2 - t1;
+        int nextTest = sequence[0];
+        for (int i = 0; i < sequence.length; i++) {
+            if (!(sequence[i] == nextTest)) {
+                return Boolean.FALSE;
+            }
+            nextTest += commonDifference;
+        }
+        return Boolean.TRUE;
+    }
+
     public static void main(String[] args) {
-        System.out.println(getPrimeNumbers(10, 50));
+        int[] name = {4, 8, 12, 16, 20};
+        System.out.println(isFollowsAP(name));
     }
 }
-
