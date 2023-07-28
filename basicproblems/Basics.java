@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Basics {
     public static @NotNull String reverseStringM1(String inputString) {
@@ -154,18 +155,45 @@ public class Basics {
         int t1 = sequence[0];
         int t2 = sequence[1];
         int commonDifference = t2 - t1;
-        int nextTest = sequence[0];
+        int testNext = sequence[0];
+
         for (int i = 0; i < sequence.length; i++) {
-            if (!(sequence[i] == nextTest)) {
+            if (!(sequence[i] == testNext)) {
                 return Boolean.FALSE;
             }
-            nextTest += commonDifference;
+            testNext += commonDifference;
         }
         return Boolean.TRUE;
     }
 
+    /*
+     * s: integer, starting point of house location.
+     * t: integer, ending location of  house location.
+     * a: integer, location of the Apple tree.
+     * b: integer, location of the Orange tree.
+     * apples: integer array, distances at which each apple falls from the tree.
+     * oranges: integer array, distances at which each orange falls from the tree.
+     */
+    public static void countApplesAndOranges(int s, int t, int a, int b, List<Integer> apples, List<Integer> oranges) {
+        int noOfApples = 0;
+        int noOfOranges = 0;
+
+        for (Integer apple : apples) {
+            if (s <= apple + a && t >= apple + a) {
+                noOfApples++;
+            }
+        }
+        for (Integer orange : oranges) {
+            if (s <= (orange + b) && t >= (orange + b)) {
+                noOfOranges++;
+            }
+        }
+        System.out.println(noOfApples);
+        System.out.println(noOfOranges);
+    }
+
     public static void main(String[] args) {
         int[] name = {4, 8, 12, 16, 20};
-        System.out.println(isFollowsAP(name));
+        System.out.println(getPrimeNumbers(34, 100));
     }
 }
