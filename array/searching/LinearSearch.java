@@ -7,10 +7,11 @@ public class LinearSearch implements Search {
      * Here im using private constructor for restrict creating object externally,
      * It helps to maintain singleton object
      */
+    private LinearSearch() {
+    }
+
     public static LinearSearch getLinearSearch() {
         return LINEAR_SEARCH;
-    }
-    private LinearSearch() {
     }
 
     /*

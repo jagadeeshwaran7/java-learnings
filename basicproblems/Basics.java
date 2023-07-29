@@ -1,5 +1,6 @@
 package org.datastructure.basicproblems;
 
+import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -93,21 +94,20 @@ public class Basics {
         return primeNumbers;
      }
 
-    public static void printFibonacci(Integer range) {
-       int a = 0;
-       int b = 1;
-       int c = 1;
+    public static List<Integer> printFibonacci(Integer range) {
+        List<Integer> fibonacci = new ArrayList<>();
+        int a = 0;
+        int b = 1;
+        int c = 1;
 
-       for (int i = a; i < range; i++) {
-           if (i == range-1) {
-               System.out.print(a);
-           } else {
-               System.out.print(a + ", ");
-           }
-           a = b;
-           b = c;
-           c = a + b;
-       }
+        for (int i = 0; i < range; i++) {
+                fibonacci.add(a);
+
+            a = b;
+            b = c;
+            c = a + b;
+        }
+        return fibonacci;
     }
 
     public static @NotNull Boolean isPalindrome(String inputString) {
@@ -192,8 +192,55 @@ public class Basics {
         System.out.println(noOfOranges);
     }
 
+    public static Boolean isEven(Integer input) {
+        return input % 2 == 0;
+    }
+
+    public static Boolean isOdd(Integer input) {
+        return input % 2 != 0;
+    }
+
+    public static int add(int x, int y) {
+        int z = x + y;
+        return z;
+    }
+
+    public static void breakingRecords(List<Integer> scores) {
+        int breakingHighScore = 0;
+        int breakingLowScore = 0;
+        int currentHighScore = scores.get(0);
+        int currentLowScore = currentHighScore;
+
+        for (Integer score: scores) {
+            if (currentHighScore < score) {
+                currentHighScore = score;
+                breakingHighScore++;
+            }
+
+            if (currentLowScore > score) {
+                currentLowScore = score;
+                breakingLowScore++;
+            }
+        }
+
+        System.out.println("Breaking High Scores: " + breakingHighScore);
+        System.out.println("Breaking Low Scores: " + breakingLowScore);
+    }
+
+
     public static void main(String[] args) {
-        int[] name = {4, 8, 12, 16, 20};
-        System.out.println(getPrimeNumbers(34, 100));
+        //int[] name = {4, 8, 12, 16, 20};
+        //10 5 20 20 4 5 2 25 1
+        List<Integer> scores = new ArrayList<>();
+        scores.add(10);
+        scores.add(5);
+        scores.add(20);
+        scores.add(20);
+        scores.add(4);
+        scores.add(5);
+        scores.add(2);
+        scores.add(25);
+        scores.add(4);
+        breakingRecords(scores);
     }
 }
