@@ -1,78 +1,72 @@
 package org.datastructure.linkedlist;
 
-import javax.xml.soap.Node;
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-class Box {
+class Node {
     int data;
-    Box next = null;
+    Node next = null;
 
-    public Box(int data) {
+    public Node(int data) {
         this.data = data;
-    }
-    public Box() {
     }
 }
 
 public class CustomLinkedList {
-    transient int size = 0;
-    Box head = null;
-
-    public void display() {
-        System.out.print(this.head.data + "->");
-        while (this.head.next != null) {
-            System.out.print(this.head.next.data + "->");
-            this.head = this.head.next;
-        }
-    }
-
-    public void linkBefore(int data) {
-        Box newBox = new Box(data);
-        Box temp = this.head;
-        this.head = newBox;
-        this.head.next = temp;
-        this.size++;
-    }
+    int size = 0;
+    Node head = null;
 
     public void linkLast(int data) {
-        Box newBox = new Box(data);
+        Node newNode = new Node(data);
         if (this.head == null) {
-            this.head = newBox;
-            ++this.size;
+            this.head = newNode;
+            this.size++;
         } else {
-            // Else traverse till the last node
-            // and insert the new_node there
-            Box last = this.head;
-            while (last.next != null) {
-                last = last.next;
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
             }
-
-            // Insert the new_node at last node
-            last.next = newBox;
-            ++this.size;
+            temp.next = newNode;
+            this.size++;
+        }
+    }
+    public void linkFirst(int data) {
+        Node newNode = new Node(data);
+        if (this.head == null) {
+            this.head = newNode;
+            this.size++;
+        } else {
+            Node temp = this.head;
+            this.head = newNode;
+            newNode.next = temp;
+            this.size++;
         }
     }
 
     public void insert(int position, int data) {
-        Box newNode = new Box(data);
-        Box temp = this.head;
+        Node newNode = new Node(data);
         int i = 1;
+        Node temp = this.head;
         while (i < position-1) {
             temp = temp.next;
             i++;
         }
-        Box temp2 = temp.next;
+        Node temp2 = temp.next;
         temp.next = newNode;
         newNode.next = temp2;
         this.size++;
     }
 
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.print("null");
+    }
+
     public static void main(String[] args) {
 
         CustomLinkedList customLinkedList = new CustomLinkedList();
-        customLinkedList.linkLast(1);
+        customLinkedList.linkFirst(1);
         customLinkedList.linkLast(2);
         customLinkedList.linkLast(3);
         customLinkedList.linkLast(4);
