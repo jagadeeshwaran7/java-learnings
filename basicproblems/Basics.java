@@ -1,13 +1,10 @@
 package org.datastructure.basicproblems;
-
-import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Basics {
     public static @NotNull String reverseStringM1(String inputString) {
@@ -101,8 +98,7 @@ public class Basics {
         int c = 1;
 
         for (int i = 0; i < range; i++) {
-                fibonacci.add(a);
-
+            fibonacci.add(a);
             a = b;
             b = c;
             c = a + b;
@@ -210,7 +206,6 @@ public class Basics {
         int breakingLowScore = 0;
         int currentHighScore = scores.get(0);
         int currentLowScore = currentHighScore;
-
         for (Integer score: scores) {
             if (currentHighScore < score) {
                 currentHighScore = score;
@@ -227,20 +222,10 @@ public class Basics {
         System.out.println("Breaking Low Scores: " + breakingLowScore);
     }
 
-
     public static void main(String[] args) {
         //int[] name = {4, 8, 12, 16, 20};
         //10 5 20 20 4 5 2 25 1
         List<Integer> scores = new ArrayList<>();
-        scores.add(10);
-        scores.add(5);
-        scores.add(20);
-        scores.add(20);
-        scores.add(4);
-        scores.add(5);
-        scores.add(2);
-        scores.add(25);
-        scores.add(4);
         breakingRecords(scores);
     }
 }
