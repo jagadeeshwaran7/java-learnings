@@ -83,6 +83,7 @@ public class CustomLinkedList {
             temp = temp.next;
             i++;
         }
+        assert prev != null;
         prev.next = temp.next;
         this.size--;
     }
@@ -116,47 +117,13 @@ public class CustomLinkedList {
     public static void main(String[] args) {
         System.out.println("LINKED LIST A");
         CustomLinkedList customLinkedList = new CustomLinkedList();
-        customLinkedList.linkFirst(1);
-        customLinkedList.linkLast(2);
-        customLinkedList.linkLast(3);
-        customLinkedList.linkLast(4);
-        customLinkedList.linkLast(6);
-        customLinkedList.insert(5,5);
-        System.out.println("NODES: " + customLinkedList.size);
-        customLinkedList.display();
-
-        CustomLinkedList customLinkedList2 = new CustomLinkedList();
-        customLinkedList2.linkLast(7);
-        customLinkedList2.linkLast(8);
-        customLinkedList2.linkLast(9);
-        customLinkedList2.linkLast(10);
-        System.out.println("LINKED LIST B");
-        System.out.println("NODES: " + customLinkedList2.size);
-        customLinkedList2.display();
-        System.out.println("----------------------------");
-        System.out.println("AFTER MERGE");
-        customLinkedList.merge(customLinkedList2);
-        System.out.println("NODES: " + customLinkedList.size);
-        customLinkedList.display();
-
-        System.out.println("LINKED LIST B");
-        System.out.println("NODES: " + customLinkedList2.size);
-        customLinkedList2.display();
-
-        CustomLinkedList linkedList3 = new CustomLinkedList();
-        linkedList3.linkLast(11);
-        linkedList3.linkLast(12);
-        linkedList3.linkLast(13);
-        linkedList3.linkLast(14);
-        linkedList3.linkLast(15);
-        customLinkedList.merge(linkedList3);
-
-        System.out.println("NODES: " + customLinkedList.size);
-        customLinkedList.display();
-        customLinkedList.deleteByPosition(6);
-        System.out.println("After Delete: " + customLinkedList.size);
-        customLinkedList.deleteByPosition(12);
-        System.out.println("After Delete: " + customLinkedList.size);
+        for (int i = 1; i <= 10; i++) {
+            customLinkedList.linkLast(i);
+        }
+        customLinkedList.deleteByPosition(10);
+        customLinkedList.insert(10, 10);
+        customLinkedList.insert(11, 11);
+        customLinkedList.insert(12, 12);
         System.out.println(customLinkedList.size);
         customLinkedList.display();
     }
