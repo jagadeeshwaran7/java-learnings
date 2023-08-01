@@ -70,6 +70,23 @@ public class CustomLinkedList {
        this.size--;
     }
 
+    public void deleteByPosition(int position) {
+        Node temp = this.head;
+        int i = 0;
+        int pre = position - 2;
+        Node prev = null;
+        while (i < position - 1) {
+            if (i == pre) {
+                prev = temp;
+                i++;
+            }
+            temp = temp.next;
+            i++;
+        }
+        prev.next = temp.next;
+        this.size--;
+    }
+
     public  void merge(CustomLinkedList linkedList) {
         Node temp = this.head;
         while (temp.next != null) {
@@ -136,8 +153,10 @@ public class CustomLinkedList {
 
         System.out.println("NODES: " + customLinkedList.size);
         customLinkedList.display();
-        customLinkedList.deleteTail();
-        customLinkedList.deleteTail();
+        customLinkedList.deleteByPosition(6);
+        System.out.println("After Delete: " + customLinkedList.size);
+        customLinkedList.deleteByPosition(12);
+        System.out.println("After Delete: " + customLinkedList.size);
         System.out.println(customLinkedList.size);
         customLinkedList.display();
     }
