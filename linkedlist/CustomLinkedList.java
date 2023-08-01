@@ -9,7 +9,6 @@ class Node {
     }
 }
 
-// TODO: 01/08/23 Create two sorted linked list and merge it
 public class CustomLinkedList {
     int size = 0;
     Node head = null;
@@ -19,7 +18,6 @@ public class CustomLinkedList {
 
         if (this.head == null) {
             this.head = newNode;
-
         } else {
             Node temp = head;
             while (temp.next != null) {
@@ -29,6 +27,7 @@ public class CustomLinkedList {
         }
         this.size++;
     }
+
     public void linkFirst(int data) {
         Node newNode = new Node(data);
         if (this.head == null) {
@@ -55,14 +54,30 @@ public class CustomLinkedList {
         this.size++;
     }
 
+    public void deleteHead() {
+        this.head = this.head.next;
+        this.size--;
+    }
+
+    public void deleteTail() {
+       Node temp = this.head;
+       int i = 1;
+       while (i < this.size-1) {
+           temp = temp.next;
+           i++;
+       }
+       temp.next = null;
+       this.size--;
+    }
+
     public  void merge(CustomLinkedList linkedList) {
         Node temp = this.head;
         while (temp.next != null) {
             temp = temp.next;
         }
 
-
         while (linkedList.head != null) {
+            --linkedList.size;
             temp.next = linkedList.head;
             temp = temp.next;
             linkedList.head = linkedList.head.next;
@@ -78,10 +93,11 @@ public class CustomLinkedList {
         }
         System.out.print("null");
         System.out.println();
+        System.out.println();
     }
 
     public static void main(String[] args) {
-
+        System.out.println("LINKED LIST A");
         CustomLinkedList customLinkedList = new CustomLinkedList();
         customLinkedList.linkFirst(1);
         customLinkedList.linkLast(2);
@@ -97,11 +113,32 @@ public class CustomLinkedList {
         customLinkedList2.linkLast(8);
         customLinkedList2.linkLast(9);
         customLinkedList2.linkLast(10);
+        System.out.println("LINKED LIST B");
+        System.out.println("NODES: " + customLinkedList2.size);
+        customLinkedList2.display();
+        System.out.println("----------------------------");
+        System.out.println("AFTER MERGE");
         customLinkedList.merge(customLinkedList2);
         System.out.println("NODES: " + customLinkedList.size);
-
         customLinkedList.display();
 
+        System.out.println("LINKED LIST B");
+        System.out.println("NODES: " + customLinkedList2.size);
         customLinkedList2.display();
+
+        CustomLinkedList linkedList3 = new CustomLinkedList();
+        linkedList3.linkLast(11);
+        linkedList3.linkLast(12);
+        linkedList3.linkLast(13);
+        linkedList3.linkLast(14);
+        linkedList3.linkLast(15);
+        customLinkedList.merge(linkedList3);
+
+        System.out.println("NODES: " + customLinkedList.size);
+        customLinkedList.display();
+        customLinkedList.deleteTail();
+        customLinkedList.deleteTail();
+        System.out.println(customLinkedList.size);
+        customLinkedList.display();
     }
 }
