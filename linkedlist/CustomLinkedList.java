@@ -1,25 +1,16 @@
 package org.datastructure.linkedlist;
 
-class Node {
-    int data;
-    Node next = null;
-
-    public Node(int data) {
-        this.data = data;
-    }
-}
-
-public class CustomLinkedList {
+public class CustomLinkedList <T> {
     int size = 0;
-    Node head = null;
+    Node<T> head = null;
 
-    public void linkLast(int data) {
-        Node newNode = new Node(data);
+    public void linkLast(T data) {
+        Node<T> newNode = new Node<>(data);
 
         if (this.head == null) {
             this.head = newNode;
         } else {
-            Node temp = head;
+            Node<T> temp = head;
             while (temp.next != null) {
                 temp = temp.next;
             }
@@ -28,27 +19,27 @@ public class CustomLinkedList {
         this.size++;
     }
 
-    public void linkFirst(int data) {
-        Node newNode = new Node(data);
+    public void linkFirst(T data) {
+        Node<T> newNode = new Node<>(data);
         if (this.head == null) {
             this.head = newNode;
         } else {
-            Node temp = this.head;
+            Node<T> temp = this.head;
             this.head = newNode;
             newNode.next = temp;
         }
         this.size++;
     }
 
-    public void insert(int position, int data) {
-        Node newNode = new Node(data);
+    public  void insert(int position, T data) {
+        Node<T> newNode = new Node<>(data);
         int i = 1;
-        Node temp = this.head;
+        Node<T> temp = this.head;
         while (i < position-1) {
             temp = temp.next;
             i++;
         }
-        Node temp2 = temp.next;
+        Node<T> temp2 = temp.next;
         temp.next = newNode;
         newNode.next = temp2;
         this.size++;
@@ -60,7 +51,7 @@ public class CustomLinkedList {
     }
 
     public void deleteTail() {
-       Node temp = this.head;
+       Node<T> temp = this.head;
        int i = 1;
        while (i < this.size-1) {
            temp = temp.next;
@@ -70,11 +61,11 @@ public class CustomLinkedList {
        this.size--;
     }
 
-    public void deleteByPosition(int position) {
-        Node temp = this.head;
+    public  void deleteByPosition(int position) {
+        Node<T> temp = this.head;
         int i = 0;
         int pre = position - 2;
-        Node prev = null;
+        Node<T> prev = null;
         while (i < position - 1) {
             if (i == pre) {
                 prev = temp;
@@ -88,8 +79,8 @@ public class CustomLinkedList {
         this.size--;
     }
 
-    public  void merge(CustomLinkedList linkedList) {
-        Node temp = this.head;
+    public  void merge(CustomLinkedList<T> linkedList) {
+        Node<T> temp = this.head;
         while (temp.next != null) {
             temp = temp.next;
         }
@@ -103,8 +94,8 @@ public class CustomLinkedList {
         }
     }
 
-    public void display() {
-        Node temp = head;
+    public  void display() {
+        Node<T> temp = head;
         while (temp != null) {
             System.out.print(temp.data + "->");
             temp = temp.next;
@@ -114,17 +105,19 @@ public class CustomLinkedList {
         System.out.println();
     }
 
+
     public static void main(String[] args) {
         System.out.println("LINKED LIST A");
-        CustomLinkedList customLinkedList = new CustomLinkedList();
-        for (int i = 1; i <= 10; i++) {
-            customLinkedList.linkLast(i);
-        }
-        customLinkedList.deleteByPosition(10);
-        customLinkedList.insert(10, 10);
-        customLinkedList.insert(11, 11);
-        customLinkedList.insert(12, 12);
-        System.out.println(customLinkedList.size);
+        CustomLinkedList<String> customLinkedList = new CustomLinkedList<>();
+        // customLinkedList.deleteByPosition(10);
+        customLinkedList.linkLast("j");
+        customLinkedList.linkLast("A");
+        customLinkedList.linkLast("G");
+        customLinkedList.linkLast("A");
         customLinkedList.display();
+        // customLinkedList.deleteByPosition(6);
+        // System.out.println(customLinkedList.size);
+        // customLinkedList.reverse();
+        // customLinkedList.display();
     }
 }
