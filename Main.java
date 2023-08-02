@@ -1,13 +1,18 @@
 package org.datastructure;
 
-import org.datastructure.array.searching.CustomSearch;
+import org.datastructure.linkedlist.CustomLinkedList;
+import org.datastructure.linkedlist.CustomList;
 
 public class Main {
     public static void main(String[] args) {
         int[] name = {1, 2, 3, 4, 5};
-        Boolean itContains = CustomSearch.LINEAR_SEARCH.isPresent(name, 6);
-        Boolean isPresent = CustomSearch.LINEAR_SEARCH.isPresent(name, 1);
-        System.out.println(isPresent);
-        System.out.println(itContains);
+        CustomList<Integer> mark = new CustomLinkedList<>();
+        for (int i = 10; i <= 35; i++) {
+            mark.add(i);
+        }
+        mark.show();
+        System.out.println(mark.toArray());
+        System.out.println(mark.modCount());
+        System.out.println(mark.isEmpty());
     }
 }
