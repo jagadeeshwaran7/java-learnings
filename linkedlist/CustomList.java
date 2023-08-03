@@ -22,7 +22,8 @@ public interface CustomList <T> {
     void clear();
     Integer modCount();
 
-    List<Object> toArray();
+    List<T> toArray();
 
     public boolean add(int position, T data);
+
 }

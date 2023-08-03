@@ -2,28 +2,41 @@ package org.datastructure.linkedlist;
 
 import java.util.ArrayList;
 import java.util.List;
+/*
+ *
+ */
 
 public class CustomLinkedList<T> implements CustomList<T> {
+
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
     private transient int size = 0;
     private transient int modCount = 0;
-    Node head = null;
+    transient Node<T> head = null;
 
-    private <T> void linkLast(T data) {
-        Node newNode = new Node(data);
+    private void linkLast(T data) {
+        Node<T> newNode = new Node<>(data);
 
-        if (this.head == null) {
+        if (this.isEmpty()) {
             this.head = newNode;
-            ++this.size;
-            ++this.modCount;
         } else {
-            Node temp = head;
+            Node<T> temp = head;
             while (temp.next != null) {
                 temp = temp.next;
             }
+
             temp.next = newNode;
-            ++this.size;
-            ++this.modCount;
         }
+        ++this.size;
+        ++this.modCount;
     }
 
     private void linkFirst(T data) {
@@ -43,6 +56,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     public void add(T data) {
         this.linkLast(data);
     }
+
     @Override
     public boolean add(int position, T data) {
         if (position == 0) {
@@ -67,7 +81,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     private void insertByPosition(int position, T data) {
         Node<T> newNode = new Node<>(data);
         int i = 1;
-        Node temp = this.head;
+        Node<T> temp = this.head;
         while (i < position - 1) {
             temp = temp.next;
             i++;
@@ -85,24 +99,25 @@ public class CustomLinkedList<T> implements CustomList<T> {
         ++this.modCount;
     }
 
-    public Boolean deleteTail() {
+    public void deleteTail() {
         if (isEmpty()) {
-            System.out.println("WARNING: Already LinkedList Is Empty");
-            return false;
+            System.out.println("WARNING: Already This LinkedList Is Empty");
+        } else {
+            Node<T> temp = this.head;
+            int i = 1;
+            if (temp.next == null) {
+                this.head = null;
+            }
+            while (i < this.size - 1) {
+                assert temp != null;
+                temp = temp.next;
+                i++;
+            }
+            assert temp != null;
+            temp.next = null;
+            --this.size;
+            ++this.modCount;
         }
-        Node<T> temp = this.head;
-        int i = 1;
-        if (temp.next == null) {
-            this.head = null;
-        }
-        while (i < this.size - 1) {
-            temp = temp.next;
-            i++;
-        }
-        temp.next = null;
-        --this.size;
-        ++this.modCount;
-        return false;
     }
 
     @Override
@@ -133,10 +148,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public boolean isEmpty() {
-        if (this.head == null) {
-            return true;
-        }
-        return false;
+        return this.head == null;
     }
 
     public void merge(CustomLinkedList<T> linkedList) {
@@ -164,12 +176,11 @@ public class CustomLinkedList<T> implements CustomList<T> {
         }
         System.out.print("null");
         System.out.println();
-        System.out.println();
     }
 
     @Override
     public void clear() {
-        Node var2;
+        Node<T> var2;
         while (head != null) {
             var2 = head.next;
             head.data = null;
@@ -186,10 +197,9 @@ public class CustomLinkedList<T> implements CustomList<T> {
     }
 
     @Override
-    public List<Object> toArray() {
-        List<Object> bucket = new ArrayList<>();
-        int index = 0;
-        Node var1 = this.head;
+    public  List<T> toArray() {
+        List<T> bucket = new ArrayList<>();
+        Node<T> var1 = this.head;
         while (var1 != null) {
             bucket.add(var1.data);
             var1 = var1.next;
