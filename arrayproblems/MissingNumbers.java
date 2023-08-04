@@ -7,7 +7,7 @@ import java.util.BitSet;
 
 public class MissingNumbers {
     // To find a missing number in an array
-//Time Complexity=O(n)
+   //Time Complexity=O(n)
     public static int toFindAMissingNumber(@NotNull int[] array, @NotNull int length) {
         int sumOfArray = 0;
         int expectedSum = length * ((length + 1) / 2);
@@ -50,6 +50,7 @@ public class MissingNumbers {
         for (int number : numbers) {
             sumOfElements += number;
         }
+
         /*
          * s(n) = n/2 (a+l)
          * To find series of n where, a is first element of an array and l is last element of an array

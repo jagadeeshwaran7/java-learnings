@@ -1,4 +1,4 @@
-package org.datastructure.linkedlist;
+package org.datastructure.mycollections.linkedlist;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.datastructure.linkedlist;
+package org.datastructure.mycollections.linkedlist;
 
 import java.util.List;
 
@@ -20,6 +20,7 @@ public interface CustomList <T> {
     void show();
 
     void clear();
+
     Integer modCount();
 
     List<T> toArray();

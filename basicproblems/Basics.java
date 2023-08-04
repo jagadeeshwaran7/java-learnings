@@ -1,10 +1,7 @@
 package org.datastructure.basicproblems;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Basics {
     public static @NotNull String reverseStringM1(String inputString) {
@@ -222,10 +219,43 @@ public class Basics {
         System.out.println("Breaking Low Scores: " + breakingLowScore);
     }
 
-    public static void main(String[] args) {
-        //int[] name = {4, 8, 12, 16, 20};
+    public static void reductionCost(List<Integer> num) {
+        List<Integer> cost = new ArrayList<>();
+        List<Integer> input = new ArrayList<>(num);
+
+        cost.add(input.get(0) + input.get(1));
+        for (int i = 2; i < input.size(); i++) {
+            cost.add(input.get(i) + cost.get(cost.size() - 1));
+        }
+        int total = 0;
+        for (Integer number: cost) {
+            total += number;
+        }
+        System.out.println(total);
+
+    }
+
+        public int[] twoSum(int[] nums, int target) {
+            Map<Integer, Integer> num_2 = new HashMap<Integer, Integer>();
+            for (int i = 0; i < nums.length; i++) {
+                int difference = target - nums[i];
+                if (num_2.containsKey(difference)) {
+                    return new int[] {i, num_2.get(difference)};
+                }
+                num_2.put(nums[i], i);
+            }
+            throw new IllegalArgumentException("no match found");
+        }
+
+    public static void main(String[] args) throws IllegalAccessException {
+        int[] name = {8, 7, 11, 1};
         //10 5 20 20 4 5 2 25 1
-        List<Integer> scores = new ArrayList<>();
-        breakingRecords(scores);
+        //List<Integer> cost = new ArrayList<>();
+        //cost.add(1);
+        //cost.add(2);
+        //cost.add(3);
+        // reductionCost(cost);
+        // breakingRecords(cost);
+        // System.out.println(cost.get(cost.size() - 1));
     }
 }
