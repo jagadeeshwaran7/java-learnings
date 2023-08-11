@@ -1,4 +1,4 @@
-package org.datastructure.array.searching;
+package org.datastructure.practice.searching;
 
 public interface Search {
     Boolean isPresent(int[] inputArray, int find);

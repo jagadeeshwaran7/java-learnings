@@ -1,4 +1,6 @@
-package org.datastructure.mycollections.linkedlist;
+package org.datastructure.list;
+
+import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.util.List;
 
@@ -8,7 +10,6 @@ public interface CustomList <T> {
     int size();
 
     int hashCode();
-
     void insert(int position, T data);
 
     void deleteByPosition(int position);
@@ -26,5 +27,4 @@ public interface CustomList <T> {
     List<T> toArray();
 
     public boolean add(int position, T data);
-
 }

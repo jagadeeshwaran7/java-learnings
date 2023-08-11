@@ -1,4 +1,4 @@
-package org.datastructure.array.searching;
+package org.datastructure.practice.searching;
 
 public class LinearSearch implements Search {
     private static final LinearSearch LINEAR_SEARCH = new LinearSearch();
@@ -41,7 +41,8 @@ public class LinearSearch implements Search {
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      */
-   @Override
+
+    @Override
     public final Object getIndex(int[] inputArray, int value) {
 
         for (int index = 0; index < inputArray.length; index++) {

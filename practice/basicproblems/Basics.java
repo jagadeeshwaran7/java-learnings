@@ -1,4 +1,4 @@
-package org.datastructure.basicproblems;
+package org.datastructure.practice.basicproblems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -150,8 +150,8 @@ public class Basics {
         int commonDifference = t2 - t1;
         int testNext = sequence[0];
 
-        for (int i = 0; i < sequence.length; i++) {
-            if (!(sequence[i] == testNext)) {
+        for (int j : sequence) {
+            if (!(j == testNext)) {
                 return Boolean.FALSE;
             }
             testNext += commonDifference;
@@ -194,8 +194,7 @@ public class Basics {
     }
 
     public static int add(int x, int y) {
-        int z = x + y;
-        return z;
+        return x + y;
     }
 
     public static void breakingRecords(List<Integer> scores) {
@@ -235,27 +234,19 @@ public class Basics {
 
     }
 
-        public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> num_2 = new HashMap<Integer, Integer>();
+    public static void twoSum(int @NotNull [] nums, int target) {
+            Map<Integer, Integer> num2 = new HashMap<Integer, Integer>();
+            System.out.print("Matches = ");
             for (int i = 0; i < nums.length; i++) {
                 int difference = target - nums[i];
-                if (num_2.containsKey(difference)) {
-                    return new int[] {i, num_2.get(difference)};
+                if (num2.containsKey(difference)) {
+                    System.out.print("{" + num2.get(difference) + ", " + i + "}" + ", ");
                 }
-                num_2.put(nums[i], i);
+                num2.put(nums[i], i);
             }
-            throw new IllegalArgumentException("no match found");
         }
 
     public static void main(String[] args) throws IllegalAccessException {
-        int[] name = {8, 7, 11, 1};
-        //10 5 20 20 4 5 2 25 1
-        //List<Integer> cost = new ArrayList<>();
-        //cost.add(1);
-        //cost.add(2);
-        //cost.add(3);
-        // reductionCost(cost);
-        // breakingRecords(cost);
-        // System.out.println(cost.get(cost.size() - 1));
+        int[] name = {8, 7, 11, 1, 2, 5, 9, 32, 3, 4};
     }
 }

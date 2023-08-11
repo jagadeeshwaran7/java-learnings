@@ -1,8 +1,10 @@
-package org.datastructure.mycollections.linkedlist;
+package org.datastructure.arraylist;
+
+import org.datastructure.list.CustomList;
 
 import java.util.List;
 
-public class CustomArrayList<T> implements CustomList<T>{
+public class CustomArrayList<T> implements CustomList<T> {
     @Override
     public void add(T data) {
 

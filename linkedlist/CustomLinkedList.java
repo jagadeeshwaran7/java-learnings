@@ -1,4 +1,6 @@
-package org.datastructure.mycollections.linkedlist;
+package org.datastructure.linkedlist;
+
+import org.datastructure.list.CustomList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     private transient int size = 0;
     private transient int modCount = 0;
-    transient Node<T> head = null;
+    private transient Node<T> head = null;
 
     private void linkLast(T data) {
         Node<T> newNode = new Node<>(data);
