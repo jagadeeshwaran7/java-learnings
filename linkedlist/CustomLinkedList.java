@@ -1,14 +1,17 @@
 package org.datastructure.linkedlist;
 
+import org.datastructure.list.CustomAbstractList;
 import org.datastructure.list.CustomList;
+import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
- *
+/**
+ * @author Jagadeesh Waran
  */
-
-public class CustomLinkedList<T> implements CustomList<T> {
+public class CustomLinkedList<T> extends CustomAbstractList<T> implements CustomList<T> {
+    private transient int size = 0;
+    private transient Node<T> head = null;
 
     private static class Node<T> {
         T data;
@@ -19,11 +22,11 @@ public class CustomLinkedList<T> implements CustomList<T> {
             this.next = null;
         }
     }
+     CustomLinkedList() {
 
-    private transient int size = 0;
-    private transient int modCount = 0;
-    private transient Node<T> head = null;
+    }
 
+    @Contract(pure = true)
     private void linkLast(T data) {
         Node<T> newNode = new Node<>(data);
 
@@ -41,6 +44,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
         ++this.modCount;
     }
 
+    @Contract(pure = true)
     private void linkFirst(T data) {
         Node<T> newNode = new Node<>(data);
         if (this.head == null) {
@@ -80,6 +84,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
         ++this.modCount;
     }
 
+    @Contract(pure = true)
     private void insertByPosition(int position, T data) {
         Node<T> newNode = new Node<>(data);
         int i = 1;
@@ -95,12 +100,14 @@ public class CustomLinkedList<T> implements CustomList<T> {
         ++this.modCount;
     }
 
+    @Contract(pure = true)
     public void deleteHead() {
         this.head = this.head.next;
         --this.size;
         ++this.modCount;
     }
 
+    @Contract(pure = true)
     public void deleteTail() {
         if (isEmpty()) {
             System.out.println("WARNING: Already This LinkedList Is Empty");
@@ -153,6 +160,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
         return this.head == null;
     }
 
+    @Contract(pure = true)
     public void merge(CustomLinkedList<T> linkedList) {
         Node<T> temp = this.head;
         while (temp.next != null) {
